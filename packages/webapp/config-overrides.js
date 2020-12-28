@@ -6,5 +6,8 @@ module.exports = override(
   babelInclude([
     path.resolve('src'), // make sure you link your own source
     path.resolve('../common'),
+    path.resolve('../ui') 
+    
+    
   ]),
 )

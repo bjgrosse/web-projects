@@ -9,7 +9,8 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@monorepo/common": "*",
+    "@monorepo/common2": "*",
+    "@web/ui": "*",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
     "@types/react": "^16.9.26",
