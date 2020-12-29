@@ -6,7 +6,8 @@
     "clean": "npx lerna run clean && rm -rf node_modules",
     "test": "npx lerna run test",
     "build": "npx lerna run build",
-    "start": "npx lerna run --scope @monorepo/webapp start"
+    "start": "npx lerna run --scope @monorepo/webapp start",
+    "deploy": "cd packages/webapp && firebase deploy --only hosting && cd ../../"
   },
   "devDependencies": {
     "lerna": "^3.20.2"

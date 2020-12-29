@@ -1,9 +1,20 @@
 {
-  "name": "@monorepo/common",
+  "name": "@web/common",
   "private": true,
   "version": "0.0.1",
   "description": "common package",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 9009"
+  },
+  "devDependencies": {
+    "@storybook/react": "^6.1.11"
+  }
 }
