@@ -1,14 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import AppContext from "AppContext";
+import { observer } from "mobx-react";
 import { Redirect, Route } from "react-router-dom";
 
 function PrivateRoute({ children, ...rest }) {
-  let { user } = useContext(AppContext);
+  let { appState } = useContext(AppContext);
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        user ? (
+        appState.user ? (
           children
         ) : (
           <Redirect
@@ -23,4 +24,4 @@ function PrivateRoute({ children, ...rest }) {
   );
 }
 
-export default PrivateRoute;
+export default observer(PrivateRoute);

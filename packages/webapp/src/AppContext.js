@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
-
+import ApplicationStore from "Stores/ApplicationStore";
 import firebase from "firebase/app";
 
 const defaultState = {
@@ -14,22 +14,25 @@ export const AppContext = React.createContext({
 });
 
 export const AppContextManager = (props) => {
-  const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const appState = useRef(ApplicationStore.create());
   const unregister = useRef();
 
   // Listen to the Firebase Auth state and set the local state.
   useEffect(() => {
-    setIsLoading(true);
     unregister.current = firebase.auth().onAuthStateChanged((user) => {
-      setUser(user);
-      setIsLoading(false);
+      appState.current.setUser(user).then(() => {
+        setIsLoading(false);
+      });
     });
 
     return () => unregister.current();
   }, []);
 
-  const context = useMemo(() => ({ user, isLoading }), [user, isLoading]);
+  const context = useMemo(() => ({ appState: appState.current, isLoading }), [
+    appState.current,
+    isLoading,
+  ]);
 
   if (isLoading) return null;
 
